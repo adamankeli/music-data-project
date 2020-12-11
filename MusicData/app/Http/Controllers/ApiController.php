@@ -10,6 +10,8 @@ class ApiController extends Controller
     public function getAllMusic()
     {
         // use to get all Music records
+        $music = Music::get()->toJson(JSON_PRETTY_PRINT);
+        return response($music, 200);
         
     }
 
