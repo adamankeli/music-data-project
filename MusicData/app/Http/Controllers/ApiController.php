@@ -34,8 +34,8 @@ class ApiController extends Controller
     public function getMusic($id)
     {
         // use to retrieve music record
-        if (Music::where('SKU',$id)->exists()){
-            $music = Music::where('SKU', $id)->get()->toJson(JSON_PRETTY_PRINT);
+        if (Music::where('sku',$id)->exists()){
+            $music = Music::where('sku', $id)->get()->toJson(JSON_PRETTY_PRINT);
             return response($music,200);
         }else{
             return response()->json([
@@ -46,11 +46,65 @@ class ApiController extends Controller
 
     public function updateMusic(Request $request, $id)
     {
-        // use to update music record
+        if (Music::where('sku', $id)->exists()) {
+            $music = Music::find($id);
+            $music->album = is_null($request->album) ? $music->album : $request->album;
+            $music->artist = is_null($request->artist) ? $music->artist : $request->artist;
+            $music->genre = is_null($request->genre) ? $music->genre : $request->genre;
+            $music->tags= is_null($request->tags) ? $music->tags : $request->tags;
+            $music->price = is_null($request->price) ? $music->price : $request->price;
+            $music->save();
+
+            return response()->json([
+                "message" => "Music records updated successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => "Music Record Not Found"
+            ], 404);
+        }
     }
+
+  /*
+    public function updateMusic(Request $request,$id)
+    {
+        // use to update music record
+        if (Music::where('sku', $id)->exists()) {
+            $music = Music:: find($id);
+            $music->album = is_null($request->album) ? $music->album : $request->album;
+            $music->artist= is_null($request->artist) ? $music->artist : $request->artist;
+            $music->genre = is_null($request->genre) ? $music->genre : $request->genre;
+            $music->tags =  is_null($request->tags) ? $music->tags : $request->tags;
+            $music->price = is_null($request->price) ? $music->price : $request->price;
+            $music->save();
+
+            return response()->json([
+                "message" => "Music record Updated Successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => "Music record not found"
+            ],404);
+        }
+
+    }
+    */
 
     public function deleteMusic($id)
     {
         //use to delete music record
+        if (Music::where('sku', $id)->exists()) {
+            $music = Music::find($id);
+            $music->delete();
+
+            return response()->json([
+                "message" => "Music record deleted"
+            ], 202);
+        } else {
+            return response()->json([
+                "message" => "Music record not found"
+            ], 404);
+        }
     }
+
 }
