@@ -34,6 +34,14 @@ class ApiController extends Controller
     public function getMusic($id)
     {
         // use to retrieve music record
+        if (Music::where('SKU',$id)->exists()){
+            $music = Music::where('SKU', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($music,200);
+        }else{
+            return response()->json([
+                "message" => "Music Record not found"
+            ], 404);
+        }
     }
 
     public function updateMusic(Request $request, $id)
