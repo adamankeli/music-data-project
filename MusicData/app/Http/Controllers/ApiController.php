@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Music;
 use Illuminate\Http\Request;
 
@@ -64,31 +65,6 @@ class ApiController extends Controller
             ], 404);
         }
     }
-
-  /*
-    public function updateMusic(Request $request,$id)
-    {
-        // use to update music record
-        if (Music::where('sku', $id)->exists()) {
-            $music = Music:: find($id);
-            $music->album = is_null($request->album) ? $music->album : $request->album;
-            $music->artist= is_null($request->artist) ? $music->artist : $request->artist;
-            $music->genre = is_null($request->genre) ? $music->genre : $request->genre;
-            $music->tags =  is_null($request->tags) ? $music->tags : $request->tags;
-            $music->price = is_null($request->price) ? $music->price : $request->price;
-            $music->save();
-
-            return response()->json([
-                "message" => "Music record Updated Successfully"
-            ], 200);
-        } else {
-            return response()->json([
-                "message" => "Music record not found"
-            ],404);
-        }
-
-    }
-    */
 
     public function deleteMusic($id)
     {
