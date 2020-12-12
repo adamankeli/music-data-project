@@ -14,7 +14,7 @@ class ImportExcelController extends Controller
     //
     public function index()
     {
-        $contacts = Music::orderBy('created_at', 'DESC')->get();
+        $music = Music::orderBy('created_at', 'ASC')->get();
         return view('import_excel.index', compact('music'));
     }
 

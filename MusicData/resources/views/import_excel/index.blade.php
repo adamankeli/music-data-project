@@ -50,6 +50,7 @@
      <div class="table-responsive">
       <table class="table table-bordered table-striped">
        <tr>
+        <th>SKU</th>
         <th>Album</th>
         <th>Artist</th>
         <th>Genre</th>
@@ -58,6 +59,7 @@
                </tr>
        @foreach($music as $m)
        <tr>
+        <td>{{ $m->sku }}</td>
         <td>{{ $m->album }}</td>
         <td>{{ $m->artist }}</td>
         <td>{{ $m->genre }}</td>

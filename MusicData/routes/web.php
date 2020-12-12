@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('import-excel', 'ImportExcel\ImportExcelController@index');
+Route::post('import-excel','ImportExcel\ImportExcelController@import');
