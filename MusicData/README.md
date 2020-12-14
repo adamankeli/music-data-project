@@ -29,7 +29,10 @@ to create the "music" table in the database
 
 ** Next, start up the Laravel server using:
 
+    cd into MusicData
     php artisan serve 
+
+    Once that's done, you can navigate to http://127.0.0.1:8000/import-excel to see the 'Import Music Record' Page.
 
 
 The music API has the following endpoints:
