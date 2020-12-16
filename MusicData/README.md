@@ -2,7 +2,7 @@
 ## About the project
 Create a simple database schema and an import script to take the CSV and import the data into the database created.
 
-The store also wants to provide their data to their affiliates, so you need to also create a simple API endpoint for them to retrieve all the album information in JSON format by using the SKU ID. EG http://localhost/api/music/1
+The store also wants to provide their data to their affiliates, so you need to also create a simple API endpoint for them to retrieve all the album information in JSON format by using the SKU ID. EG http://localhost/api/album/1
 
 ##Prerequisites
  - PHP 7.1 or Higher
@@ -25,7 +25,7 @@ DB_PASSWORD=root
 
     artisan migrate 
     
-to create the "music" table in the database
+to create the "album, artist and genre" tables in the database
 
 ** Next, start up the Laravel server using:
 
@@ -35,17 +35,17 @@ to create the "music" table in the database
     Once that's done, you can navigate to http://127.0.0.1:8000/import-excel to see the 'Import Music Record' Page.
 
 
-The music API has the following endpoints:
+The album API has the following endpoints:
 
-GET /api/music will return all music records and will be accepting GET requests.
+GET /api/album will return all album records and will be accepting GET requests.
 
-GET /api/music/{id} will return a music record by referencing its id and will be accepting GET requests.
+GET /api/album/{id} will return a album record by referencing its id and will be accepting GET requests.
 
-POST /api/music/create will create a new music record and will be accepting POST requests.
+POST /api/album/create will create a new album record and will be accepting POST requests.
 
-PUT /api/musics/update/{id} will update an existing music record by referencing its id and will be accepting PUT requests.
+PUT /api/album/update/{id} will update an existing album record by referencing its id and will be accepting PUT requests.
 
-DELETE /api/music/{id} will delete a music record by referencing its id and will be accepting DELETE requests.
+DELETE /api/album/{id} will delete a album record by referencing its id and will be accepting DELETE requests.
 
 
 
