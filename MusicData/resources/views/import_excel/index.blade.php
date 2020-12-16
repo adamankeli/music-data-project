@@ -57,12 +57,12 @@
         <th>Tags</th>
         <th>Price</th>
                </tr>
-       @foreach($music as $m)
+       @foreach($album as $m)
        <tr>
         <td>{{ $m->sku }}</td>
-        <td>{{ $m->album }}</td>
-        <td>{{ $m->artist }}</td>
-        <td>{{ $m->genre }}</td>
+        <td>{{ $m->album_name }}</td>
+        <td>{{ $m->artist->artist_name }}</td>
+        <td>{{ $m->genre->genre_name }}</td>
         <td>{{ $m->tags }}</td>
         <td>{{ $m->price }}</td>
        </tr>

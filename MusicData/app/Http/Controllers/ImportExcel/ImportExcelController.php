@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ImportExcel;
 
+use App\Album;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Imports\ImportMusic;
@@ -14,8 +15,8 @@ class ImportExcelController extends Controller
     //
     public function index()
     {
-        $music = Music::orderBy('created_at', 'ASC')->get();
-        return view('import_excel.index', compact('music'));
+        $album = Album::orderBy('created_at', 'ASC')->get();
+        return view('import_excel.index', compact('album'));
     }
 
     public function import(Request $request)
